@@ -1,0 +1,3 @@
+rule,total,chip_pts
+strict 4-GW (default),6318,78
+optimistic (upper bound),6331,91

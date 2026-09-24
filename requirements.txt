@@ -1,0 +1,13 @@
+# Runtime: what Streamlit Community Cloud installs. Pinned to the tested versions.
+streamlit==1.51.0
+numpy==2.3.5
+pandas==2.3.3
+pyarrow==21.0.0          # parquet engine for data/cache/live_pool.parquet
+scipy==1.16.3
+scikit-learn==1.7.2
+PuLP==3.3.2              # MILP squad selection (bundles the CBC solver)
+shap==0.52.0             # per-prediction drivers, cached by build_live.py
+plotly==6.3.0            # charts
+matplotlib==3.10.6       # backtest charts
+pillow==12.0.0           # player photo / badge thumbnails
+python-dotenv==1.0.1     # only read when ALLOW_ENV_KEY=1 (local scripts)

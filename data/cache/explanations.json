@@ -1,0 +1,20 @@
+{
+ "5|Muñoz|Truffert": {
+  "text": "Truffert has predicted points of 121.6 compared to 65.6 for Muñoz. This transfer results in a predicted points gain of 56.0 with a price difference of 0.0.",
+  "source": "llm",
+  "model": "google/gemma-4-31b-it:free",
+  "fact_check": "ok"
+ },
+ "5|Muharemović|O'Brien": {
+  "text": "Swapping Muharemović for O’Brien at the same £5.0 price yields a projected gain of 44.9 points, raising the expected total from 59.8 to 104.6. This move replaces a defender with no Premier League history with one who recorded 116.0 points last season and is 24.21 years old.",
+  "source": "llm",
+  "model": "qwen/qwen3.8-27b:free",
+  "fact_check": "ok"
+ },
+ "5|Konsa|Bogle": {
+  "text": "Bogle has predicted points of 4.6, while Konsa has predicted points of 2.2. This transfer results in a predicted points gain of 11.9 with a price difference of 0.0m.",
+  "source": "llm",
+  "model": "google/gemma-4-31b-it:free",
+  "fact_check": "ok"
+ }
+}

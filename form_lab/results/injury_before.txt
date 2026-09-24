@@ -1,0 +1,8 @@
+entry: 3265946
+team_gw: 5
+fell_back: False
+rating: 81.3%
+captain: Haaland
+below_margin: False
+swaps: Enzo->Schade +10.0 hold | Maguire->Justin +9.8 hold | Maguire->Kayode +8.6 hold
+benched_non_regulars: 0

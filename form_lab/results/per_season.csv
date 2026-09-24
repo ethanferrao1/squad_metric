@@ -1,0 +1,25 @@
+season,mode,strategy,total,transfers,hits,chip_pts,chips,top_pct
+23_24,chips+hits,blend,2231,41,0,7,bboost freehit tcaptain wildcard wildcard,27.2
+23_24,chips+hits,form only,2015,60,8,44,bboost freehit tcaptain wildcard wildcard,61.3
+23_24,chips+hits,no transfers,1916,0,0,26,bboost freehit tcaptain,72.2
+23_24,chips+hits,form chaser,2001,95,44,3,bboost freehit tcaptain wildcard wildcard,64.5
+23_24,plain,blend,2252,23,0,0,-,24.5
+23_24,plain,form only,1877,48,11,0,-,75.2
+23_24,plain,no transfers,1869,0,0,0,-,75.8
+23_24,plain,form chaser,1991,84,47,0,-,66.5
+24_25,chips+hits,blend,2131,39,0,30,bboost freehit tcaptain wildcard wildcard,54.0
+24_25,chips+hits,form only,2269,50,5,50,bboost freehit tcaptain wildcard wildcard,28.0
+24_25,chips+hits,no transfers,1654,0,0,2,bboost freehit tcaptain,91.2
+24_25,chips+hits,form chaser,1829,101,51,13,bboost freehit tcaptain wildcard wildcard,79.2
+24_25,plain,blend,2022,24,0,0,-,65.8
+24_25,plain,form only,2232,37,5,0,-,34.2
+24_25,plain,no transfers,1597,0,0,0,-,92.8
+24_25,plain,form chaser,1911,88,51,0,-,73.5
+25_26,chips+hits,blend,2066,40,0,41,bboost bboost freehit freehit tcaptain tcaptain wildcard wildcard,36.8
+25_26,chips+hits,form only,1964,52,7,27,bboost bboost freehit freehit tcaptain tcaptain wildcard wildcard,56.8
+25_26,chips+hits,no transfers,1715,0,0,18,bboost bboost freehit freehit tcaptain tcaptain,83.8
+25_26,chips+hits,form chaser,1812,98,46,22,bboost bboost freehit freehit tcaptain tcaptain wildcard wildcard,75.2
+25_26,plain,blend,1963,27,0,0,-,57.0
+25_26,plain,form only,1972,40,7,0,-,54.8
+25_26,plain,no transfers,1615,0,0,0,-,88.2
+25_26,plain,form chaser,1760,87,50,0,-,79.8

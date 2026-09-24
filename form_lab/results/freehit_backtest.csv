@@ -1,0 +1,40 @@
+season,variant,total,fh,fh_gain
+23_24,A: no free hit,2192,,0
+23_24,FH a >= 5,2231,GW26(a),39
+23_24,FH b >= 5,2219,GW29(b),27
+23_24,FH c >= 5,2179,GW6(c),-13
+23_24,FH abc >= 5,2179,GW6(c),-13
+23_24,FH a >= 10,2231,GW26(a),39
+23_24,FH b >= 10,2219,GW29(b),27
+23_24,FH c >= 10,2179,GW6(c),-13
+23_24,FH abc >= 10,2179,GW6(c),-13
+23_24,FH a >= 15,2231,GW26(a),39
+23_24,FH b >= 15,2219,GW29(b),27
+23_24,FH c >= 15,2195,GW34(c),1
+23_24,FH abc >= 15,2231,GW26(a),39
+24_25,A: no free hit,2108,,0
+24_25,FH a >= 5,2049,GW15(a),-2
+24_25,FH b >= 5,2115,GW36(fallback),7
+24_25,FH c >= 5,2129,GW5(c),21
+24_25,FH abc >= 5,2129,GW5(c),21
+24_25,FH a >= 10,2049,GW15(a),-2
+24_25,FH b >= 10,2115,GW36(fallback),7
+24_25,FH c >= 10,2115,GW36(fallback),7
+24_25,FH abc >= 10,2049,GW15(a),-2
+24_25,FH a >= 15,2131,GW29(a),23
+24_25,FH b >= 15,2115,GW36(fallback),7
+24_25,FH c >= 15,2115,GW36(fallback),7
+24_25,FH abc >= 15,2131,GW29(a),23
+25_26,A: no free hit,2018,,0
+25_26,FH a >= 5,2020,GW17(fallback) GW31(a),8
+25_26,FH b >= 5,2029,GW17(fallback) GW36(fallback),11
+25_26,FH c >= 5,2037,GW6(c) GW36(fallback),22
+25_26,FH abc >= 5,2000,GW6(c) GW31(a),8
+25_26,FH a >= 10,2020,GW17(fallback) GW31(a),8
+25_26,FH b >= 10,2029,GW17(fallback) GW36(fallback),11
+25_26,FH c >= 10,2043,GW17(fallback) GW26(c),25
+25_26,FH abc >= 10,2043,GW17(fallback) GW26(c),25
+25_26,FH a >= 15,2066,GW17(fallback) GW34(a),46
+25_26,FH b >= 15,2029,GW17(fallback) GW36(fallback),11
+25_26,FH c >= 15,2029,GW17(fallback) GW36(fallback),11
+25_26,FH abc >= 15,2066,GW17(fallback) GW34(a),46

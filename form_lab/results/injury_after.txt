@@ -1,0 +1,7 @@
+rating 80.6%  captain Haaland  injured starters: ['Wieffer']
+below_margin for the rest: False
+    out        in pos  gain_pts      verdict  cost
+Wieffer Yarmoliuk MID       2.2 injury cover    -1
+Maguire     Bogle DEF      14.6         hold    -2
+   Enzo      Groß MID      12.3         hold   -11
+   Enzo    Schade MID      10.0         hold    -7

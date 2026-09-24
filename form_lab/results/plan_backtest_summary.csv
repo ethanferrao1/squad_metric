@@ -1,0 +1,6 @@
+variant,23_24,24_25,25_26,3-season,transfers,hits,WC 23_24,WC 24_25,WC 25_26
+A: greedy + fixed WC,2192,2108,2018,6318,120,0,GW16 GW35,GW16 GW35,GW16 GW35
+B: plan + fixed WC,2150,2152,2034,6336,128,0,GW16 GW35,GW16 GW35,GW16 GW35
+C: plan + WC >= 3x margin,2178,2102,1944,6224,131,1,GW4,GW4,GW3 GW20
+C: plan + WC >= 5x margin,2165,2084,2064,6313,89,0,,,
+C: plan + WC >= 8x margin,2165,2084,2064,6313,89,0,,,

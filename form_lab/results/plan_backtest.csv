@@ -1,0 +1,16 @@
+season,variant,total,transfers,hits,wildcards
+23_24,A: greedy + fixed WC,2192,41,0,GW16 GW35
+23_24,B: plan + fixed WC,2150,42,0,GW16 GW35
+23_24,C: plan + WC >= 3x margin,2178,40,0,GW4
+23_24,C: plan + WC >= 5x margin,2165,26,0,
+23_24,C: plan + WC >= 8x margin,2165,26,0,
+24_25,A: greedy + fixed WC,2108,39,0,GW16 GW35
+24_25,B: plan + fixed WC,2152,44,0,GW16 GW35
+24_25,C: plan + WC >= 3x margin,2102,42,0,GW4
+24_25,C: plan + WC >= 5x margin,2084,34,0,
+24_25,C: plan + WC >= 8x margin,2084,34,0,
+25_26,A: greedy + fixed WC,2018,40,0,GW16 GW35
+25_26,B: plan + fixed WC,2034,42,0,GW16 GW35
+25_26,C: plan + WC >= 3x margin,1944,49,1,GW3 GW20
+25_26,C: plan + WC >= 5x margin,2064,29,0,
+25_26,C: plan + WC >= 8x margin,2064,29,0,

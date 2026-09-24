@@ -1,0 +1,16 @@
+[theme]
+base = "light"
+primaryColor = "#0d9488"
+backgroundColor = "#f5f7fa"
+secondaryBackgroundColor = "#eef2f6"
+textColor = "#0f172a"
+font = "sans serif"
+baseFontSize = 17
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "viewer"
+# viewers see an error's type, never its message or traceback
+showErrorDetails = "type"

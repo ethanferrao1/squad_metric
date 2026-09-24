@@ -1,0 +1,386 @@
+{
+ "5|swap|Branthwaite|Bogle": {
+  "text": "Branthwaite is being replaced because his 32 points last season and recent 5.4 points per game suggest a decline, despite his young age. Bogle offers a better return at £0.9m less, gaining 8 points over 5 gameweeks.",
+  "model": "qwen/qwen3.8-27b:free"
+ },
+ "5|plan2|Barnes|Groß": {
+  "text": "Barnes is being replaced due to a recent drop in form, scoring 5.6 points per game, and his age is a factor.  You gain 16 points over 5 gameweeks, and save £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Barnes|Groß": {
+  "text": "Barnes is being replaced due to his recent form of 5.6 points per game, which is lower than expected. He is being replaced by Gross, who is predicted to gain 9 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Barnes|Groß": {
+  "text": "Barnes is being replaced due to a drop in form, scoring 5.6 points per game recently, and his age is a negative factor. You gain 28 points over the next 5 gameweeks, and save £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Muharemović|Bogle": {
+  "text": "Muharemović is being replaced due to his poor recent form, scoring only 5.4 points per game, and his lack of Premier League history. Bogle is brought in for 16 points over the next 5 gameweeks, at a cost of £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Barnes|Groß": {
+  "text": "Barnes is being replaced due to his recent poor form, scoring only 5.6 points per game, and his age is a factor. He is replaced by Gross, who has been scoring 9.4 points per game, and is predicted to gain 9 points over the next 5 gameweeks, at a cost of £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Muñoz|Tarkowski": {
+  "text": "Muñoz is being replaced due to his age and poor recent form of 1.0 points per game. You gain 28 points over the next 5 gameweeks, for £0.7m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Muharemović|Bogle": {
+  "text": "Muharemović is being replaced due to his poor recent form, scoring only 5.4 points per game, and Bogle is predicted to gain 28 points over the next 5 gameweeks, at a cost of £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Muñoz|Tarkowski": {
+  "text": "Muñoz is being replaced due to his age and poor recent form of 1.0 points per game. Tarkowski is brought in, gaining 32 points over the next 5 gameweeks, for £0.7m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Janelt|Groß": {
+  "text": "Janelt is being replaced due to his low average minutes in his last ten games and his poor points from gameweek data last season, despite his decent recent form. You gain 32 points over 5 gameweeks, or 32 points as part of a 4-transfer plan, for £0.8m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Muharemović|Bogle": {
+  "text": "Muharemović is being replaced due to his poor recent form of 5.4 points per game. Bogle is brought in for 32 points over 5 gameweeks, at a cost of £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Janelt|Groß": {
+  "text": "Janelt is being replaced due to his low recent form and limited minutes played.  Groß is brought in for 36 points over 5 gameweeks, at a cost of £0.8m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|N.Williams|Tarkowski": {
+  "text": "N.Williams is being replaced due to his recent poor form, scoring only 3.8 points per game, and his lower predicted points. Tarkowski is brought in for 36 points over 5 gameweeks, at a cost of £1.1m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Muñoz|Bogle": {
+  "text": "Muñoz is being replaced due to his older age and lower recent form of 1.0 points per game. Bogle is brought in, gaining 36 points over the next 5 gameweeks, at a cost of £0.8m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Muharemović|De Cuyper": {
+  "text": "Muharemović is being replaced due to his poor recent form of 5.4 points per game. De Cuyper is brought in, who is predicted to gain 36 points over the next 5 gameweeks, at a cost of £0.1m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Thiaw|Bogle": {
+  "text": "Thiaw is being replaced due to his poor recent form, scoring only 2.8 points per game, and his lack of points from gameweek data last season. You gain 10 points over the next 5 gameweeks, and save £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Konsa|Bogle": {
+  "text": "Konsa is being replaced because his recent form has been poor, with only 2.4 points per game, and his age is a negative factor. Bogle is brought in at the same price, and is predicted to gain 12 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Wirtz|Schade": {
+  "text": "Wirtz is being replaced due to his recent form of 3.6 points per game, which is lower than Schade's 7.8 points per game. Schade is predicted to gain 19 points over the next 5 gameweeks, and is £1.1m cheaper.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Konsa|Tarkowski": {
+  "text": "Konsa is being replaced due to his lower recent form (2.4 points per game) and lower predicted points (2.2) compared to Tarkowski. Tarkowski is predicted to gain 26 points over the next 5 gameweeks, and costs £1.5m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Wirtz|Schade": {
+  "text": "Wirtz is being replaced due to his recent form of 3.6 points per game, which is lower than Schade's 7.8. Schade is predicted to gain 28 points over 5 gameweeks, and is £1.1m cheaper.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Konsa|Tarkowski": {
+  "text": "Konsa is being replaced due to his lower recent form (2.4 points per game) and lower predicted points (2.2) compared to Tarkowski. Tarkowski is expected to gain 32 points over the next 5 gameweeks, at a cost of £1.5m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Thiaw|Bogle": {
+  "text": "Thiaw is being replaced due to his low recent form of 2.8 points per game, and his low predicted points of 2.7. Bogle is brought in, gaining 32 points over the next 5 gameweeks, and saving £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Szoboszlai|Gakpo": {
+  "text": "Szoboszlai is being replaced due to a drop in form, with 4.0 points per game recently, compared to 4.95 in the second half of last season. Gakpo is brought in for 32 points over the next 5 gameweeks, at a cost of £0.2m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Thiaw|Bogle": {
+  "text": "Thiaw is being replaced because he has been scoring 2.8 points per game recently, which is a lower return than Bogle's 8.4 points per game, and his total points last season were 126.0, which is lower than Bogle's average points per match in his last ten games. Bogle is expected to gain 28 points over the next 5 gameweeks, and he is £0.4m cheaper.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Wirtz|Schade": {
+  "text": "Wirtz is being replaced due to his recent form of 3.6 points per game, which is lower than his season average. Schade is brought in, gaining 32 points over the next 5 gameweeks, at a price of £1.1m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Muharemović|Bogle": {
+  "text": "Muharemović is being replaced due to his poor recent form, scoring only 5.4 points per game, and his lack of Premier League history.  Bogle is brought in, predicted to gain 5 points over the next 5 gameweeks, at a cost of £0.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Hall|Guéhi": {
+  "text": "Hall is being replaced because his recent form has been poor, and his total points last season were low. Guéhi is brought in at a cost of £0.7m more, and is predicted to gain 3 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Muharemović|Gvardiol": {
+  "text": "Muharemović is being replaced due to poor recent form, scoring only 5.4 points per game, and Gvardiol is brought in for his strong recent form, scoring 7.4 points per game. Gvardiol is expected to gain 1 point over the next 5 gameweeks, at a cost of £0.7m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Hall|Bogle": {
+  "text": "Hall is being replaced because his recent form of 6.2 points per game is lower than Bogle's 8.4, and his total points last season were not as high as his age would suggest. Bogle is brought in for 5 points over the next 5 gameweeks, at a cost of £0.7m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Calafiori|Bogle": {
+  "text": "Calafiori is being replaced due to his poor recent form of 5.8 points per game. You gain 17 points over the next 5 gameweeks, at the same price.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Wissa|João Pedro": {
+  "text": "Wissa is being replaced due to his poor recent form (3.0 points per game) and his poor points per match in the second half of last season (0.95 points per match). Joao Pedro is brought in, gaining 8 points over the next 5 gameweeks, at a cost of £1.5m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Calafiori|Bogle": {
+  "text": "Calafiori is being replaced due to his poor recent form, scoring only 5.8 points per game. Bogle is brought in, gaining 9 points over the next 5 gameweeks, at a cost of £1.2m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Wissa|João Pedro": {
+  "text": "Wissa is being replaced due to his poor recent form, scoring only 3.0 points per game, and his low points per match in the second half of last season. Joao Pedro is brought in, predicted to gain 9 points over the next 5 gameweeks, at a cost of £1.5m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Konsa|Bogle": {
+  "text": "Konsa is being replaced because his recent form of 2.4 points per game is lower than Bogle's 8.4 points per game. Bogle is predicted to gain 10 points over the next 5 gameweeks at the same price.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Slater|Groß": {
+  "text": "Slater is being replaced due to his poor recent form, scoring 3.0 points per game, and his lack of Premier League history. You are gaining 17 points over the next 5 gameweeks, at the cost of £1.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Slater|Groß": {
+  "text": "Slater is being replaced due to his poor recent form, scoring 3.0 points per game, and his lack of Premier League history. Gross is brought in for 27 points over 5 gameweeks, at a cost of £1.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Palmer|Schade": {
+  "text": "Palmer is being replaced due to a muscular injury, which means he has a 75% chance of playing, and his recent form of 5.6 points per game. Schade is brought in, gaining 27 points over the next 5 gameweeks, at a price of £3.5m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Ajer|Bogle": {
+  "text": "Ajer is being replaced due to his low minutes played in his last ten games, and his poor total points and points from gameweek data last season. Bogle is brought in for 10 points over 5 gameweeks, costing £0.1m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Ballard|Bogle": {
+  "text": "Ballard is being replaced due to a downward trend in his scores and his recent form of 2.8 points per game. Bogle is brought in, gaining 9 points over the next 5 gameweeks, at a cost of £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game.  Gross is brought in for 12 points over the next 5 gameweeks, and at a cost of £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Dedić|Tarkowski": {
+  "text": "Dedić is being replaced due to an unspecified injury with an unknown return date, and his recent form of 2.6 points per game. Tarkowski is predicted to gain 11 points over the next 5 gameweeks, and costs £1.6m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Xhaka|Schade": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game. Schade is brought in at a cost of £0.7m more, and is predicted to gain 9 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Tzolis|Groß": {
+  "text": "Tzolis is being replaced due to his poor recent form of 3.2 points per game. You gain 11 points over the next 5 gameweeks, and save £0.5m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Tzolis|Groß": {
+  "text": "Tzolis is being replaced due to his poor recent form of 3.2 points per game. You're gaining 18 points over the next 5 gameweeks, and saving £0.5m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Dedić|Tarkowski": {
+  "text": "Dedić is being replaced due to an unspecified injury with an unknown return date, and his recent form of 2.6 points per game. Tarkowski is brought in, gaining 20 points over the next 5 gameweeks, at a cost of £1.6m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|E.Le Fée|Groß": {
+  "text": "E.Le Fée is being replaced because his recent form has dropped to 3.6 points per game, and he has been a bit inconsistent in his performance. You gain 10 points over the next 5 gameweeks, and the transfer will cost £0.1m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Szoboszlai|Groß": {
+  "text": "Szoboszlai is being replaced due to his recent form of 4.0 points per game. Gross is brought in, gaining 20 points over the next 5 gameweeks, for £1.2m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|E.Le Fée|Groß": {
+  "text": "Le Fée is being replaced due to his recent form of 3.6 points per game, which is lower than his average in the second half of last season.  Groß is brought in at £5.8m, £0.1m more than Le Fée, and is predicted to gain 9 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Branthwaite|Tarkowski": {
+  "text": "Branthwaite is being replaced due to his poor recent form, scoring only 5.4 points per game, and his low total points last season, which contributed negatively to his predicted points. You gain 20 points over the next 5 gameweeks, for £0.6m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Tzolis|Groß": {
+  "text": "Tzolis is being replaced due to his poor recent form of 3.2 points per game. Gross is brought in, at a cost of £0.5m more, for a predicted 11 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Konsa|Bogle": {
+  "text": "Konsa is being replaced because his recent form has been poor, with only 2.4 points per game, and his age is a negative factor. Bogle is brought in at the same price, and is predicted to gain 27 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Calafiori|Tarkowski": {
+  "text": "Calafiori is being replaced due to his poor recent form of 5.8 points per game. Tarkowski is brought in for 18 points over 5 gameweeks, at a cost of £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Hume|Bogle": {
+  "text": "Hume is being replaced due to his recent poor form, scoring only 2.0 points per game, and his age. Bogle is brought in, gaining 6 points over the next 5 gameweeks, for £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Szoboszlai|Gakpo": {
+  "text": "Szoboszlai is being replaced due to a drop in recent form, from 4.95 points per match in the second half of last season to 4.0 points per match. Gakpo is brought in for 3 points over the next 5 gameweeks, at a cost of £0.2m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Szoboszlai|Scott": {
+  "text": "Szoboszlai is being replaced due to a dip in recent form, scoring 4.0 points per game, and Scott is expected to gain 3 points over the next 5 gameweeks, at a cost of £0.9m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Hume|Bogle": {
+  "text": "Hume is being replaced due to his poor recent form (2.0 points per game) and his age (23.37). You gain 6 points over the next 5 gameweeks, at a cost of £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Wieffer|Bogle": {
+  "text": "Wieffer is being replaced due to a knee injury and poor recent form, averaging only 1.4 points per game. Bogle is brought in, gaining 17 points over the next 5 gameweeks, for £0.3m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Enzo|Groß": {
+  "text": "Enzo is being replaced due to his poor recent form, scoring only 2.6 points per game, and his lower predicted points of 2.7 over the next 5 gameweeks. You gain 12 points over the next 5 gameweeks, and save £1.1m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Wieffer|Bogle": {
+  "text": "Wieffer is being replaced due to a knee injury and poor recent form, averaging 1.4 points per game. Bogle is brought in at £4.6m, £0.3m cheaper, and is predicted to gain 17 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Wieffer|Bogle": {
+  "text": "Wieffer is being replaced due to a knee injury and poor recent form (1.4 points per game). Bogle is brought in, gaining 29 points over the next 5 gameweeks, at a cost of £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Watkins|João Pedro": {
+  "text": "Watkins is being replaced due to his permanent transfer to Al Hilal, and his recent form of 0.0 points per game. You gain 9 points over the next 5 gameweeks by bringing in João Pedro, who has a recent form of 6.6 points per game, at a price of £0.1m cheaper.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Senesi|Bogle": {
+  "text": "Senesi is being replaced because his recent form has been poor, with only 0.6 points per game, and he has not been a top driver for points in the second half of last season. Bogle is brought in, gaining 11 points over the next 5 gameweeks, for £1.2m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game.  He is being replaced by Gross, who is predicted to gain 12 points over the next 5 gameweeks, for £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game. He is being replaced by Gross, who is predicted to gain 29 points over the next 5 gameweeks, at a cost of £0.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Lacroix|Bogle": {
+  "text": "Lacroix is being replaced due to his poor recent form, scoring only 2.6 points per game, and his overall performance last season. Bogle is brought in, gaining 22 points over the next 5 gameweeks, for £1.3m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Lacroix|Bogle": {
+  "text": "Lacroix is being replaced due to his recent form of 2.6 points per game, which is lower than his average from the second half of last season. Bogle is brought in, gaining 29 points over 5 gameweeks, at a cost of £1.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Watkins|João Pedro": {
+  "text": "Watkins is being replaced because he has left the league permanently, and his recent form has been poor. You gain 34 points over the next 5 gameweeks, at the cost of £0.1m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game. You gain 34 points over the next 5 gameweeks, £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan3|Ampadu|Schade": {
+  "text": "Ampadu is being replaced due to his recent form of 4.2 points per game. Schade is brought in for 29 points over 5 gameweeks, £0.8m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Ampadu|Schade": {
+  "text": "Ampadu is being replaced due to his recent form of 4.2 points per game. Schade is brought in, at a cost of £0.8m more, as part of a plan to gain 34 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game.  You gain 22 points over the next 5 gameweeks, for £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan4|Lacroix|Bogle": {
+  "text": "Lacroix is being replaced due to a drop in form, with his recent points per game falling to 2.6, and Bogle is brought in, who has been scoring 8.4 points per game recently. You gain 34 points over the next 5 gameweeks, and save £1.3m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Watkins|Haaland": {
+  "text": "Watkins is being replaced because he has left the league permanently and has not scored any points recently. You are gaining 36 points over the next 5 gameweeks, for £7.8m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Xhaka|Groß": {
+  "text": "Xhaka is being replaced due to his age and recent form of 4.2 points per game.  He is replaced by Gross, who is predicted to gain 36 points over the next 5 gameweeks, at a cost of £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Saka|Schade": {
+  "text": "Saka is being replaced due to a recent dip in form, scoring 6.4 points per game, compared to his average of 3.47 points per game in the second half of last season. Schade is brought in at £6.2m, £3.3m cheaper than Saka, and is predicted to gain 36 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Lacroix|De Cuyper": {
+  "text": "Lacroix is being replaced due to his recent form of 2.6 points per game, which is lower than his points per match in the second half of last season. De Cuyper is brought in, gaining 36 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan5|Gabriel|Bogle": {
+  "text": "Gabriel is being replaced due to his recent form of 5.0 points per game, which is lower than his average from last season. Bogle is brought in, gaining 36 points over the next 5 gameweeks, and saving £3.4m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Calafiori|Tarkowski": {
+  "text": "Calafiori is being replaced due to his lower recent form and lower points from last season. Tarkowski is brought in for 7 points over the next 5 gameweeks, for £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Ndiaye|Schade": {
+  "text": "Ndiaye is being replaced due to his recent form of 4.4 points per game, which is lower than Schade's 7.8 points per game. Schade is predicted to gain 7 points over the next 5 gameweeks, and costs £0.4m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Kinsky|Verbruggen": {
+  "text": "Kinsky is being replaced because his recent form has been poor, with only 3.6 points per game, and his total points last season were low. Verbruggen is brought in at the same price, and is predicted to gain 6 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Calafiori|Tarkowski": {
+  "text": "Calafiori is being replaced due to his recent poor form, with only 5.8 points per game, and his lower predicted points. You gain 7 points over the next 5 gameweeks, for £0.3m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Kinsky|Raya": {
+  "text": "Kinsky is being replaced due to his poor form, scoring only 3.6 points per game recently, and his low total points last season. Raya is brought in, gaining 16 points over the next 5 gameweeks, for £1.6m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Szoboszlai|Schade": {
+  "text": "Szoboszlai is being replaced due to a drop in form, scoring 4.0 points per game recently, compared to 4.95 in the second half of last season. You gain 16 points over 5 gameweeks, and save £0.8m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|O'Shea|Bogle": {
+  "text": "O'Shea is being replaced because his recent form has been poor, with only 2.0 points per game, and he has no Premier League history. You are gaining 9 points over the next 5 gameweeks, for £0.6m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Rice|Groß": {
+  "text": "Rice is being replaced due to his recent form of 4.0 points per game and an unspecified injury with a 75% chance of playing. He has been a solid performer, but his recent form and injury risk make him a less attractive option. You gain 10 points over the next 5 gameweeks, and the transfer costs £1.6m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Rice|Groß": {
+  "text": "Rice is being replaced due to his recent form of 4.0 points per game and an unspecified injury with a 75% chance of playing. You gain 10 points over the next 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Murillo|Bogle": {
+  "text": "Murillo is being replaced due to his poor recent form, scoring only 4.6 points per game, and his low total points last season. You are gaining 9 points over 5 gameweeks.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Furlong|Bogle": {
+  "text": "Furlong is being replaced due to his poor recent form (0.2 points per game) and lack of Premier League history, Bogle is brought in as part of a plan to gain 19 points over the next 5 gameweeks, at a cost of £0.7m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Rice|Groß": {
+  "text": "Rice is being replaced due to his recent form of 4.0 points per game and an unspecified injury with a 75% chance of playing. You gain 21 points over 5 gameweeks, at a cost of £1.6m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|O'Shea|Tarkowski": {
+  "text": "O'Shea is being replaced due to his poor recent form, scoring only 2.0 points per game, and his lack of Premier League history. You gain 21 points over the next 5 gameweeks, for £2.1m more.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Maddison|Scott": {
+  "text": "Maddison is being replaced due to his poor recent form of 0.6 points per game. Scott is brought in for 12 points over the next 5 gameweeks, at a cost of £0.2m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan1|Maddison|Schade": {
+  "text": "Maddison is being replaced due to poor recent form, scoring only 0.6 points per game. Schade is brought in, who is predicted to gain 15 points over the next 5 gameweeks, at a cost of £0.1m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Maddison|Schade": {
+  "text": "Maddison is being replaced due to poor recent form, scoring only 0.6 points per game, and no Premier League history. Schade is brought in for 15 points over the next 5 gameweeks, at a cost of £0.1m.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|swap|Keane|Bogle": {
+  "text": "Keane is being replaced due to his poor recent form and his age, which is expected to contribute negatively to his performance. Bogle is brought in for 14 points over the next 5 gameweeks, at a cost of £0.2m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Maddison|Schade": {
+  "text": "Maddison is being replaced due to poor recent form, scoring only 0.6 points per game. Schade is brought in, gaining 26 points over the next 5 gameweeks, at a price of £0.1m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ },
+ "5|plan2|Botman|Bogle": {
+  "text": "Botman is being replaced due to his lower recent form of 3.0 points per game, and his age is not contributing to his points. Bogle is brought in for 26 points over 5 gameweeks, at a cost of £0.4m less.",
+  "model": "mistralai/mistral-small-24b-instruct-2501"
+ }
+}

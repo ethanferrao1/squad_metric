@@ -1,0 +1,9 @@
+season,strategy,total_before,total_after,top_pct_before,top_pct_after,blanks_before,blanks_after,chip_pts_before,chip_pts_after
+23_24,blend,2007,2192,63.5,33.8,60,29,7,7
+23_24,form only,1859,1979,76.5,67.5,41,21,7,26
+24_25,blend,1970,2108,69.8,56.2,37,6,3,30
+24_25,form only,2115,2243,55.8,33.2,24,13,3,50
+25_26,blend,1890,2018,68.2,44.5,39,13,17,41
+25_26,form only,1775,1941,78.2,61.0,30,7,19,27
+3-season,blend,5867,6318,,,136,48,27,78
+3-season,form only,5749,6163,,,95,41,29,103

@@ -1,0 +1,28 @@
+# Secrets: never commit a key
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Runtime caches and logs
+data/cache/img/
+data/cache/llm_log.csv
+*.log
+logs/
+*.part
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+form_lab/cache/.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Screenshots and editor files
+form_lab/results/screens/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
