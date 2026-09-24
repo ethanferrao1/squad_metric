@@ -2,8 +2,13 @@
 
 Every response is cached as JSON under data/cache/, so once a team has been
 fetched the demo runs with no network at all. Pass refresh=True to re-fetch.
+
+While refresh.py builds a new cache, its thread sees a staging overlay:
+writes go to the staging copy and reads look there first, then in the live
+cache. Every other thread keeps reading the live cache untouched.
 """
 import json
+import threading
 import urllib.request
 
 import data_io as io
@@ -13,9 +18,33 @@ CACHE_DIR = io.DATA_DIR / 'cache'
 UA = 'Mozilla/5.0'          # the API 403s an unset user-agent
 TIMEOUT = 30
 
+_local = threading.local()
+
+
+def set_staging(roots):
+    """{live cache dir: staging dir} for this thread only; None to stop."""
+    _local.roots = roots or {}
+
+
+def overlay(root):
+    """Where this thread writes cache files for `root`."""
+    return getattr(_local, 'roots', {}).get(root, root)
+
+
+def cached_file(root, name):
+    """The file to read for `name` under `root`, staged copy first; None if absent."""
+    for d in dict.fromkeys((overlay(root), root)):
+        if (d / name).exists():
+            return d / name
+    return None
+
+
+def _name(path):
+    return path.strip('/').replace('/', '_') + '.json'
+
 
 def _cache_path(path):
-    return CACHE_DIR / (path.strip('/').replace('/', '_') + '.json')
+    return CACHE_DIR / _name(path)
 
 
 def _get(path, refresh=False):
@@ -24,8 +53,8 @@ def _get(path, refresh=False):
     A cached copy is used unless `refresh` is set; if the network is
     unavailable and nothing is cached, the underlying URLError propagates.
     """
-    f = _cache_path(path)
-    if f.exists() and not refresh:
+    f = cached_file(CACHE_DIR, _name(path))
+    if f and not refresh:
         return json.loads(f.read_text(encoding='utf-8'))
 
     req = urllib.request.Request(f'{BASE}/{path.strip("/")}/',
@@ -33,8 +62,9 @@ def _get(path, refresh=False):
     with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
         data = json.load(r)
 
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps(data), encoding='utf-8')
+    out = overlay(CACHE_DIR) / _name(path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(data), encoding='utf-8')
     return data
 
 

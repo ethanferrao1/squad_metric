@@ -34,9 +34,11 @@ CSS = f"""
 html, body, .stApp, .stMarkdown, button, input, textarea, select {{
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }}
 .stApp {{ background: {PAGE}; color: {TEXT}; font-size: 16px; }}
-#MainMenu, footer, [data-testid="stToolbar"], [data-testid="stDecoration"],
-[data-testid="stStatusWidget"] {{ display: none !important; }}
-header[data-testid="stHeader"] {{ background: transparent; height: 0; }}
+/* the menu and deploy button only: the sidebar's expand control must stay */
+#MainMenu, [data-testid="stMainMenu"], [data-testid="stAppDeployButton"], footer,
+[data-testid="stDecoration"], [data-testid="stStatusWidget"] {{ display: none !important; }}
+header[data-testid="stHeader"] {{ background: transparent; pointer-events: none; }}
+header[data-testid="stHeader"] button {{ pointer-events: auto; }}
 .block-container {{ max-width: 1200px; padding: 2.2rem 1.5rem 4rem; }}
 [data-testid="stSidebar"] {{ background: {SURFACE}; border-right: 1px solid {BORDER}; }}
 h1, h2, h3 {{ letter-spacing: -0.01em; }}
@@ -130,8 +132,28 @@ h1, h2, h3 {{ letter-spacing: -0.01em; }}
   border-radius: 0 0 6px 6px; padding: 2px 4px; }}
 .dot {{ display: inline-block; width: 7px; height: 7px; border-radius: 50%;
   margin-right: 4px; vertical-align: middle; }}
+.sm-tiles {{ display: flex; gap: 8px; }}
+.sm-tile {{ flex: 1 1 0; min-width: 0; background: {SURFACE}; border: 1px solid {BORDER};
+  border-radius: 10px; padding: 6px 10px; }}
+.sm-tile .v {{ font-size: 16px; font-weight: 600; color: {TEXT}; white-space: nowrap; }}
+.sm-tile .l {{ font-size: 12px; color: {MUTED}; }}
+
+/* narrow screens: the top bar replaces the sidebar's controls; tabs scroll */
+.st-key-mobilebar {{ display: none !important; }}
+@media (max-width: 899px) {{
+  .st-key-mobilebar {{ display: flex !important; margin-bottom: 4px; }}
+  .st-key-mobileteam {{ flex-wrap: nowrap !important; }}
+  .st-key-mobileteam > div:first-child {{ flex: 1 1 0 !important; min-width: 0; width: auto !important; }}
+  .st-key-mobileteam > div:last-child {{ flex: 0 0 auto !important; width: auto !important; }}
+  .block-container {{ padding-top: 3.4rem; }}
+  .st-key-section {{ margin-bottom: 16px; }}
+  .st-key-section [role="radiogroup"] {{ flex-wrap: nowrap; overflow-x: auto;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; }}
+  .st-key-section [role="radiogroup"]::-webkit-scrollbar {{ display: none; }}
+  .st-key-section label {{ flex: 0 0 auto; white-space: nowrap; padding: 8px 12px; }}
+}}
 @media (max-width: 640px) {{
-  .block-container {{ padding: 1.4rem .6rem 3rem; }}
+  .block-container {{ padding: 3.4rem .6rem 3rem; }}
   .pl {{ width: 60px; }} .pl img {{ width: 36px; }}
   .pl .nm, .pl .pj {{ font-size: 11px; }} .pl .mk {{ right: 2px; }}
   .sm-card {{ padding: 16px; }} .sm-brand {{ font-size: 24px; }}
@@ -226,6 +248,13 @@ def section(title):
 
 def card(body_html):
     st.markdown(f"<div class='sm-card'>{body_html}</div>", unsafe_allow_html=True)
+
+
+def tiles(items):
+    """Small labelled figures in one row: the narrow-screen top bar."""
+    cells = ''.join(f"<div class='sm-tile'><div class='l'>{esc(l)}</div>"
+                    f"<div class='v'>{v}</div></div>" for l, v in items)
+    return f"<div class='sm-tiles'>{cells}</div>"
 
 
 def stats(items):

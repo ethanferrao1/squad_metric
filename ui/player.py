@@ -1,4 +1,4 @@
-﻿"""The player detail panel: photo and badge, key figures, form, price and drivers."""
+"""The player detail panel: photo and badge, key figures, form, price and drivers."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -25,8 +25,8 @@ def detail(code, pool, proj, offline):
         f"<div class='sm-row'><img class='avatar-lg' src='{images.photo(p)}'>"
         f"<div><div class='sm-row'><img class='crest-lg' src='{images.badge(p, 44)}'>"
         f"<div><div class='sm-brand' style='font-size:26px'>{s.esc(p['name'])}</div>"
-        f"<div class='sm-muted'>{s.esc(p['club'])} Â· "
-        f"{s.POS.get(p['element_type'], '')} Â· {s.money(p['price'])}</div></div></div>"
+        f"<div class='sm-muted'>{s.esc(p['club'])} · "
+        f"{s.POS.get(p['element_type'], '')} · {s.money(p['price'])}</div></div></div>"
         f"<div style='margin-top:10px'>{s.status_badge(p['status'], p['chance'])}</div>"
         + (f"<div class='sm-muted' style='margin-top:8px'>{s.esc(p['news'])}</div>"
            if p['news'] else '') + '</div></div>',
@@ -73,9 +73,9 @@ def detail(code, pool, proj, offline):
 def _price(hist):
     fig = go.Figure(go.Scatter(x=hist['gw'], y=hist['price'] / 10, mode='lines',
                                line=dict(color=s.ACCENT, width=2),
-                               hovertemplate='GW%{x}: Â£%{y:.1f}m<extra></extra>'))
+                               hovertemplate='GW%{x}: £%{y:.1f}m<extra></extra>'))
     fig = s.plot_layout(fig, 'Price')
-    fig.update_yaxes(tickprefix='Â£', ticksuffix='m', tickformat='.1f', dtick=0.1)
+    fig.update_yaxes(tickprefix='£', ticksuffix='m', tickformat='.1f', dtick=0.1)
     fig.update_xaxes(tickprefix='GW', dtick=1)
     return fig
 
@@ -91,4 +91,20 @@ def _drivers(where, pool, code):
                          horizontal=True))
 
 
-show = st.dialog('Player details', width='large')(detail)
+def _closed():
+    st.session_state.pop('panel', None)
+
+
+_dialog = st.dialog('Player details', width='large', on_dismiss=_closed)(detail)
+
+
+def show(code, pool, proj, offline):
+    """Open a player's panel, remembering it in session state until it is closed."""
+    st.session_state['panel'] = code
+    _dialog(code, pool, proj, offline)
+
+
+def reopen(pool, proj, offline):
+    """Open the remembered panel again (after a full rerun closed it)."""
+    if st.session_state.get('panel') is not None:
+        _dialog(st.session_state['panel'], pool, proj, offline)

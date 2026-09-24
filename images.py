@@ -150,13 +150,16 @@ def placeholder(kind):
     return f'data:image/svg+xml;base64,{svg}'
 
 
-def uri(path, kind, width=None, url=None):
+def uri(path, kind, width=None, url=None, remote=False):
     """A data URI for an image, fetched on first use and shrunk to `width` px;
     the placeholder if it cannot be fetched. Only real images are memoised,
-    so a placeholder is retried once the network is back."""
+    so a placeholder is retried once the network is back. `remote` hands an
+    uncached image's URL to the browser instead, for long tables."""
     memo = (path, width)
     if memo in _uris:
         return _uris[memo]
+    if not path.exists() and remote and url and os.environ.get('FPL_OFFLINE') != '1':
+        return url
     if not path.exists() and not fetch(url, path):
         return placeholder(kind)
     try:
@@ -167,17 +170,17 @@ def uri(path, kind, width=None, url=None):
     return _uris[memo]
 
 
-def photo(p, width=None):
+def photo(p, width=None, remote=False):
     """Photo for a core.players() record."""
     pid = str(p.get('photo', '')).split('.')[0]
     return uri(photo_path(p.get('photo', '')), 'photo', width,
-               PHOTO.format(id=pid) if pid else None)
+               PHOTO.format(id=pid) if pid else None, remote)
 
 
-def badge(p, width=None):
+def badge(p, width=None, remote=False):
     code = p.get('team_code')
     return uri(badge_path(code), 'badge', width,
-               BADGE.format(team=code) if code is not None else None)
+               BADGE.format(team=code) if code is not None else None, remote)
 
 
 def shirt(p, width=None):

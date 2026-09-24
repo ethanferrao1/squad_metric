@@ -1,4 +1,4 @@
-﻿"""Plotly figures, built from plain frames so they can be tested without a page."""
+"""Plotly figures, built from plain frames so they can be tested without a page."""
 import plotly.graph_objects as go
 
 from ui import style as s
@@ -12,7 +12,7 @@ def _series(fig, log, projection, name, colour, legend):
         x=log['gw'], y=log['points'], mode='lines+markers', name=name,
         connectgaps=False, line=dict(color=colour, width=2), marker=dict(size=7),
         customdata=log[['opp', 'minutes']].to_numpy(), showlegend=legend,
-        hovertemplate='GW%{x} Â· %{customdata[0]}<br>%{customdata[1]} min Â· '
+        hovertemplate='GW%{x} · %{customdata[0]}<br>%{customdata[1]} min · '
                       '%{y} pts<extra>' + s.esc(name) + '</extra>'))
     if len(played):
         roll = played['points'].rolling(ROLLING, min_periods=1).mean()

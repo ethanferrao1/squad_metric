@@ -25,8 +25,8 @@ def table(pool, proj):
         ppg = blend.get(r.code, r.pred / 38)
         m = mult.get(r.code, [1.0] * 5)
         label = s.STATUS.get(p['status'], s.STATUS['a'])[0]
-        rows.append({'code': r.code, 'Photo': images.photo(p, 30),
-                     'Club': images.badge(p, 24), 'Player': p['name'],
+        rows.append({'code': r.code, 'Photo': images.photo(p, 30, remote=True),
+                     'Club': images.badge(p, 24, remote=True), 'Player': p['name'],
                      'Team': p['club'], 'Pos': s.POS.get(p['element_type'], ''),
                      'Price': p['price'] / 10, 'Status': label,
                      'Next GW': ppg * m[0], 'Next 5 GWs': ppg * sum(m),

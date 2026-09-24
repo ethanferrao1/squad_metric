@@ -10,6 +10,7 @@ data/cache/llm_log.csv
 *.log
 logs/
 *.part
+.refresh-staging/
 
 # Python
 __pycache__/

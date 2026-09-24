@@ -85,16 +85,16 @@ def roster(season=None):
     return players
 
 
-def unmodelled(modelled, season=None):
+def unmodelled(modelled, season=None, players=None):
     """Everyone on the roster the model has no view on: new signings,
     promoted players, and anyone under the 450-minute floor.
 
     They get the median prediction of modelled players at the same position
     and a similar price -- a placeholder so a real squad containing them can
     still be rated, not a forecast. `modelled=False` marks them so the
-    report can say so.
+    report can say so. `players` overrides the roster (the live API's, say).
     """
-    players = roster(season)
+    players = roster(season) if players is None else players
 
     have = set(modelled['code'])
     p = players[~players['code'].isin(have)].copy()

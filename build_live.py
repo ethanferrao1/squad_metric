@@ -225,8 +225,35 @@ def build(path=OUT):
     return pool
 
 
-def load(path=OUT):
+def refresh_live(old, path=OUT):
+    """The pool without a refit, for a deployment without the historical seasons.
+
+    Every existing row keeps its fitted (or imputed) prediction, drivers and
+    name; new signings are added from today's bootstrap; then prices,
+    positions and availability are applied exactly as build() applies them.
+    """
+    live = rt.api_roster()
+    if live is None:
+        raise RuntimeError('no bootstrap to refresh the pool from')
+    keep = old[['code', 'element_type', 'team_code', 'price', 'last_pts', 'pred',
+                'modelled', 'drivers']]
+    new = rt.unmodelled(old[old['modelled']],
+                        players=live[~live['code'].isin(set(old['code']))])
+    new['drivers'] = None
+    names = pd.concat([old.set_index('code')['web_name'],
+                       live.set_index('code')['web_name']])
+    pool = rt.decorate(pd.concat([keep, new], ignore_index=True),
+                       names[~names.index.duplicated()])
+    pool = add_live_prices(add_live_positions(add_availability(pool)))
+    pool = pool[old.columns]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pool.to_parquet(path, index=False)
+    return pool
+
+
+def load(path=None):
     """The cached pool. Raises if build() has never been run."""
+    path = path or OUT
     if not path.exists():
         raise FileNotFoundError(
             f'{path} not found -- run `python build_live.py` first')

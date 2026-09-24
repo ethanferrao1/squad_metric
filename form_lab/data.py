@@ -101,17 +101,20 @@ STATUS = {'network_failed': False}
 
 
 def _get(path, refresh=False):
-    """GET one API path, via form_lab's own cache."""
-    f = CACHE / (path.strip('/').replace('/', '_') + '.json')
-    if f.exists() and not refresh:
+    """GET one API path, via form_lab's own cache (and a refresh's staging overlay)."""
+    import fpl_api
+    name = path.strip('/').replace('/', '_') + '.json'
+    f = fpl_api.cached_file(CACHE, name)
+    if f and not refresh:
         return json.loads(f.read_text(encoding='utf-8'))
 
     req = urllib.request.Request(f'{API}/{path.strip("/")}/',
                                  headers={'User-Agent': UA})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
         data = json.load(r)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps(data), encoding='utf-8')
+    out = fpl_api.overlay(CACHE) / name
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(data), encoding='utf-8')
     return data
 
 
@@ -153,8 +156,7 @@ def live_regulars(codes, gw, offline=True):
 
 def element_summary(element_id, pause=PAUSE, refresh=False):
     """One player's live gameweek history, cached. Pauses only on a real fetch."""
-    f = CACHE / f'element-summary_{element_id}.json'
-    fresh = refresh or not f.exists()
+    fresh = refresh or not is_cached(element_id)
     data = _get(f'element-summary/{element_id}', refresh)
     if fresh:
         time.sleep(pause)
@@ -163,7 +165,8 @@ def element_summary(element_id, pause=PAUSE, refresh=False):
 
 def is_cached(element_id):
     """True if this player's gameweek history is already on disk."""
-    return (CACHE / f'element-summary_{element_id}.json').exists()
+    import fpl_api
+    return fpl_api.cached_file(CACHE, f'element-summary_{element_id}.json') is not None
 
 
 def live_history(codes, pause=PAUSE, offline=False):
