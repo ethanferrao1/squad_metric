@@ -132,20 +132,20 @@ h1, h2, h3 {{ letter-spacing: -0.01em; }}
   border-radius: 0 0 6px 6px; padding: 2px 4px; }}
 .dot {{ display: inline-block; width: 7px; height: 7px; border-radius: 50%;
   margin-right: 4px; vertical-align: middle; }}
-.sm-tiles {{ display: flex; gap: 8px; }}
+.sm-tiles {{ display: flex; gap: 8px; margin-bottom: 12px; }}
 .sm-tile {{ flex: 1 1 0; min-width: 0; background: {SURFACE}; border: 1px solid {BORDER};
   border-radius: 10px; padding: 6px 10px; }}
 .sm-tile .v {{ font-size: 16px; font-weight: 600; color: {TEXT}; white-space: nowrap; }}
 .sm-tile .l {{ font-size: 12px; color: {MUTED}; }}
 
-/* narrow screens: the top bar replaces the sidebar's controls; tabs scroll */
-.st-key-mobilebar {{ display: none !important; }}
+/* the header with Refresh data pinned to its top right */
+.st-key-topbar {{ flex-wrap: nowrap !important; gap: 12px; margin-bottom: 20px; }}
+.st-key-topbar > div:first-child {{ flex: 1 1 0 !important; min-width: 0; width: auto !important; }}
+.st-key-topbar > div:last-child {{ flex: 0 0 auto !important; width: auto !important; }}
+.st-key-topbar .sm-header {{ margin-bottom: 0; }}
+
+/* narrow screens: the tabs scroll */
 @media (max-width: 899px) {{
-  .st-key-mobilebar {{ display: flex !important; margin-bottom: 4px; }}
-  .st-key-mobileteam {{ flex-wrap: nowrap !important; }}
-  .st-key-mobileteam > div:first-child {{ flex: 1 1 0 !important; min-width: 0; width: auto !important; }}
-  .st-key-mobileteam > div:last-child {{ flex: 0 0 auto !important; width: auto !important; }}
-  .block-container {{ padding-top: 3.4rem; }}
   .st-key-section {{ margin-bottom: 16px; }}
   .st-key-section [role="radiogroup"] {{ flex-wrap: nowrap; overflow-x: auto;
     scrollbar-width: none; -webkit-overflow-scrolling: touch; }}

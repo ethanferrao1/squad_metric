@@ -1,6 +1,6 @@
 """Live-AI plumbing for the page: placeholders that fill as results land.
 
-The OpenRouter key is the viewer's own, typed into the sidebar. It lives in
+The OpenRouter key is the viewer's own, typed in on the My Team page. It lives in
 st.session_state only and is handed to live_ai.resolve() as an argument.
 """
 import streamlit as st

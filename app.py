@@ -7,8 +7,8 @@ Layout only: every number comes from core.py, the lineup optimiser from
 lineup.py, live AI from live_ai.py. Only the chosen section runs, so the AI is
 called for Transfers or News only when that section is open. FPL_OFFLINE=1
 for a demo that never touches the network. Live AI uses the viewer's own
-OpenRouter key, held in session state only. Wide screens get the sidebar;
-narrow ones a top bar with the same controls (CSS picks one).
+OpenRouter key, held in session state only. The team ID and key are set on
+the My Team page, which folds them away once both are settled.
 """
 import logging
 import traceback
@@ -43,52 +43,8 @@ def log_failure(message):
     logging.error(llm_explain.redact(f'{message}\n{traceback.format_exc()}', ai.api_key()))
 
 
-# Controls drawn twice, in the sidebar (wide screens) and the top bar (narrow);
-# CSS shows one. Each copy has its own widget key, synced to one canonical key.
-VIEWS = ('wide', 'narrow')
-SYNCED = {'entry_input': '', ai.KEY: '', 'live_ai': True}
-
-
-def _init_synced():
-    for name, default in SYNCED.items():
-        st.session_state.setdefault(name, default)
-        for view in VIEWS:
-            st.session_state.setdefault(f'{name}_{view}', st.session_state[name])
-
-
-def _sync(name, view):
-    value = st.session_state[f'{name}_{view}']
-    st.session_state[name] = value
-    for other in VIEWS:
-        st.session_state[f'{name}_{other}'] = value
-
-
-def team_controls(view):
-    st.text_input('FPL team ID', key=f'entry_input_{view}', placeholder='e.g. 3265946',
-                  on_change=_sync, args=('entry_input', view))
-    if st.button('Load team', type='primary', width='stretch', key=f'load_{view}'):
-        st.session_state['entry'] = st.session_state[f'entry_input_{view}'].strip()
-
-
-def ai_settings(view):
-    """Bring your own OpenRouter key: session state only, never stored."""
-    st.text_input('OpenRouter API key (optional)', type='password', key=f'{ai.KEY}_{view}',
-                  placeholder='Paste your key', autocomplete='off',
-                  on_change=_sync, args=(ai.KEY, view))
-    st.caption('Enables live AI explanations. Your key stays in this browser '
-               'session only. [Get a key](https://openrouter.ai/keys)')
-    no_key = not ai.api_key()
-    st.toggle('Live AI', disabled=core.OFFLINE or no_key, key=f'live_ai_{view}',
-              on_change=_sync, args=('live_ai', view),
-              help='Explanations and news ratings for your team. '
-                   'Advisory only; never changes a suggestion.')
-    if core.OFFLINE:
-        st.caption('Offline mode: AI text is cached or template, as labelled.')
-    elif no_key:
-        st.caption('No key: AI text is cached or template, as labelled.')
-    elif ai.rejected():
-        st.warning(ai.REJECTED_NOTE)
-
+# Setup lives on the My Team page and folds away once a team has loaded and
+# the AI is settled: a key OpenRouter accepted, "without AI", or offline.
 
 def _start_refresh():
     started, message = refresher.start()
@@ -96,72 +52,124 @@ def _start_refresh():
         message, ':material/sync:' if started else ':material/info:')
 
 
-def refresh_button(view):
-    st.button('Refresh data', key=f'refresh_{view}', width='stretch',
+def refresh_button():
+    st.button('Refresh data', key='refresh', icon=':material/sync:',
               disabled=core.OFFLINE, on_click=_start_refresh,
               help='Fetch the latest FPL data in the background. '
                    'The page keeps working meanwhile.')
 
 
 def load():
-    """(analysis or None, [(st method, text)] to show beside the team box)."""
+    """(analysis or None, error text or None, [(st method, note)] for every page)."""
     loaded = st.session_state.get('entry', '')
     if not loaded:
-        return None, [('caption', 'Your team ID is in the URL of your FPL points page.')]
+        return None, None, []
     if not loaded.isdigit():
-        return None, [('error', 'A team ID is a number.')]
+        return None, 'A team ID is a number.', []
     try:
         t = core.team_analysis(loaded, core.OFFLINE)
     except Exception as e:
         log_failure(f'team {loaded} failed to load')
-        return None, [('error', load_message(loaded, e))]
+        return None, load_message(loaded, e), []
     notes = [('info', t['chip_note'])] if t.get('chip_note') else []
     if t['fell_back']:
         notes.append(('warning', f"Offline: showing cached data (team as of GW{t['team_gw']})."))
-    return t, notes
+    return t, None, notes
 
 
-def controls(gw):
-    """The sidebar and the narrow-screen top bar. Returns the loaded team, or None."""
-    if 'entry' not in st.session_state and st.query_params.get('team'):
-        st.session_state['entry'] = st.query_params['team']
-    _init_synced()
-    # a changed key gets a fresh chance after a rejection; compared by hash
-    seen = hash(ai.api_key() or '')
-    if st.session_state.get('ai_key_hash') != seen:
-        st.session_state['ai_key_hash'] = seen
-        ai.budget().pop('rejected', None)
+def ai_settled():
+    return (core.OFFLINE or st.session_state.get('ai_skipped')
+            or (bool(ai.api_key()) and not ai.rejected()))
 
-    with st.sidebar:
-        s.section('Your team')
-        team_controls('wide')
-        s.section('AI explanations')
-        ai_settings('wide')
-        side = st.container()
-        s.section('Data')
-        refresh_button('wide')
-    with st.container(key='mobilebar'):
-        with st.container(horizontal=True, vertical_alignment='bottom', key='mobileteam'):
-            team_controls('narrow')
-        bar = st.container()
-        with st.expander('AI settings'):
-            ai_settings('narrow')
-            refresh_button('narrow')
 
-    t, notes = load()
-    with side:
+def _submit(skip):
+    """Store the form's team ID and, if given, a key OpenRouter accepts."""
+    st.session_state['entry'] = st.session_state['setup_team'].strip()
+    st.session_state.pop('setup_error', None)
+    key = '' if skip else (st.session_state.get('setup_key') or '').strip()
+    st.session_state['ai_skipped'] = skip or st.session_state.get('ai_skipped', False)
+    if key:
+        ok = llm_explain.check_key(key)
+        if ok is False:
+            st.session_state['setup_error'] = ('OpenRouter rejected that API key. '
+                                               'Check it and try again.')
+        else:
+            st.session_state[ai.KEY] = key
+            st.session_state['setup_key'] = ''
+            st.session_state['ai_skipped'] = False
+            if ok is None:
+                st.session_state['setup_note'] = ("The key couldn't be checked just now; "
+                                                  'it will be tried when AI is needed.')
+    st.session_state['setup_open'] = False
+
+
+def setup_card(error):
+    """Team ID and optional OpenRouter key, in one form."""
+    with st.container(border=True, key='setup'):
+        s.section('Load your team')
+        with st.form('setup_form', border=False, enter_to_submit=True):
+            st.text_input('FPL team ID', key='setup_team', placeholder='e.g. 3265946',
+                          value=st.session_state.get('entry', ''),
+                          help='The number in the URL of your FPL points page.')
+            if not core.OFFLINE:
+                has = bool(ai.api_key()) and not ai.rejected()
+                st.text_input('OpenRouter API key (optional)', type='password',
+                              key='setup_key', autocomplete='off',
+                              placeholder='Key saved for this session' if has
+                              else 'Paste your key')
+                st.caption('Enables live AI explanations. Your key stays in this '
+                           'browser session only. [Get a key](https://openrouter.ai/keys)')
+            with st.container(horizontal=True):
+                st.form_submit_button('Load team', type='primary', key='setup_load',
+                                      on_click=_submit, args=(False,))
+                if not core.OFFLINE:
+                    st.form_submit_button('Continue without AI', key='setup_skip',
+                                          on_click=_submit, args=(True,))
+        for text in (error, st.session_state.get('setup_error')):
+            if text:
+                st.error(text)
+        if ai.rejected():
+            st.warning(ai.REJECTED_NOTE)
+
+
+def _reopen_setup():
+    st.session_state['setup_open'] = True
+
+
+def _live_ai_changed():
+    st.session_state['live_ai'] = st.session_state['live_ai_toggle']
+
+
+def team_summary(t):
+    """The folded setup: the team's money, the AI switch, and a way back in."""
+    st.markdown(s.tiles([('Team', st.session_state['entry']),
+                         ('Bank', s.money(t['r']['bank'])),
+                         ('Team value', s.money(t['r']['spend']))]),
+                unsafe_allow_html=True)
+    with st.container(horizontal=True, vertical_alignment='center', key='teamrow'):
+        if ai.api_key() and not core.OFFLINE:
+            st.toggle('Live AI', key='live_ai_toggle', value=st.session_state['live_ai'],
+                      on_change=_live_ai_changed,
+                      help='Explanations and news ratings for your team. '
+                           'Advisory only; never changes a suggestion.')
+        else:
+            st.caption('AI text is cached or template, as labelled.')
+        st.button('Change team or key', key='setup_change', on_click=_reopen_setup)
+    note = st.session_state.pop('setup_note', None)
+    if note:
+        st.caption(note)
+
+
+def team_setup(t, error):
+    """My Team's top: the setup form until it is settled, then the summary."""
+    if t and ai_settled() and not st.session_state.get('setup_open'):
+        team_summary(t)
+    else:
         if t:
-            st.metric('Team value', s.money(t['r']['spend']))
-            st.metric('Bank', s.money(t['r']['bank']))
-        for kind, text in notes:
-            getattr(st, kind)(text)
-    with bar:
-        st.markdown(s.tiles([('Gameweek', f'GW{gw}')] + (
-            [('Bank', s.money(t['r']['bank'])), ('Team value', s.money(t['r']['spend']))]
-            if t else [])), unsafe_allow_html=True)
-        for kind, text in notes:
-            getattr(st, kind)(text)
-    return t
+            st.markdown(s.tiles([('Bank', s.money(t['r']['bank'])),
+                                 ('Team value', s.money(t['r']['spend']))]),
+                        unsafe_allow_html=True)
+        setup_card(error)
 
 
 def _refresh_status():
@@ -194,14 +202,16 @@ def section():
                     label_visibility='collapsed')
 
 
-def render(name, t, pool):
+def render(name, t, pool, error):
     offline = core.OFFLINE
-    if name in TEAM_TABS and t is None:
+    if name == TABS[0]:
+        team_setup(t, error)
+        if t:
+            team_tabs.my_team(t, pool, offline)
+    elif name in TEAM_TABS and t is None:
         s.card("<div class='sm-card-title'>Load a team to begin</div>"
                "<div class='sm-muted' style='margin-top:6px'>Enter your FPL team ID "
-               "in the sidebar and press Load team.</div>")
-    elif name == TABS[0]:
-        team_tabs.my_team(t, pool, offline)
+               "on the My Team page.</div>")
     elif name == TABS[1]:
         team_tabs.lineup(t, pool, offline)
     elif name == TABS[2]:
@@ -230,13 +240,26 @@ def main():
     if toast:
         st.toast(toast[0], icon=toast[1])
 
+    if 'entry' not in st.session_state and st.query_params.get('team'):
+        st.session_state['entry'] = st.query_params['team']
+    st.session_state.setdefault('live_ai', True)
+    # a changed key gets a fresh chance after a rejection; compared by hash
+    seen = hash(ai.api_key() or '')
+    if st.session_state.get('ai_key_hash') != seen:
+        st.session_state['ai_key_hash'] = seen
+        ai.budget().pop('rejected', None)
+
     gw, refreshed = core.data_stamp()
-    s.header(gw, refreshed, core.OFFLINE)
+    with st.container(horizontal=True, vertical_alignment='top', key='topbar'):
+        s.header(gw, refreshed, core.OFFLINE)
+        refresh_button()
     (_status_live if refresher.STATE['running'] else _status_idle)()
-    t = controls(gw)
+    t, error, notes = load()
+    for kind, text in notes:
+        getattr(st, kind)(text)
     name = section()
     try:
-        render(name, t, pool)
+        render(name, t, pool, error)
         if reopen:
             proj = t['proj'] if t else core.blended(pool, (), core.OFFLINE)[0]
             player.reopen(pool, proj, core.OFFLINE)

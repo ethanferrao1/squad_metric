@@ -1,4 +1,5 @@
-"""The app renders every section for two cached teams offline, and players open their panel."""
+"""The app renders every section for two cached teams offline, players open their
+panel, and the My Team setup folds away once the team and key are settled."""
 import urllib.request
 from pathlib import Path
 
@@ -20,6 +21,19 @@ def offline(monkeypatch):
     monkeypatch.setattr(core, 'OFFLINE', True)
 
 
+@pytest.fixture
+def online(monkeypatch):
+    """The deployed setup: AI possible, keys checked by a stub, no network."""
+    def blocked(*a, **k):
+        raise OSError('network disabled in tests')
+    monkeypatch.setattr(urllib.request, 'urlopen', blocked)
+    monkeypatch.delenv('FPL_OFFLINE', raising=False)
+    import core
+    import llm_explain
+    monkeypatch.setattr(core, 'OFFLINE', False)
+    monkeypatch.setattr(llm_explain, 'check_key', lambda key: key == 'good-key')
+
+
 def app():
     from streamlit.testing.v1 import AppTest
     at = AppTest.from_file(str(ROOT / 'app.py'), default_timeout=600)
@@ -28,9 +42,27 @@ def app():
     return at
 
 
+def setup_shown(at):
+    return any(w.key == 'setup_team' for w in at.text_input)
+
+
 def load(at, entry):
-    at.sidebar.text_input[0].input(entry)
-    at.sidebar.button[0].click()
+    """Enter a team ID in the My Team page's setup form, reopening it if folded."""
+    if at.radio(key='section').value != 'My Team':
+        show(at, 'My Team')
+    if not setup_shown(at):
+        at.button(key='setup_change').click()
+        at.run()
+    at.text_input(key='setup_team').input(entry)
+    at.button(key='setup_load').click()
+    at.run()
+    assert not at.exception, at.exception
+
+
+def submit(at, entry, key='', button='setup_load'):
+    at.text_input(key='setup_team').input(entry)
+    at.text_input(key='setup_key').input(key)
+    at.button(key=button).click()
     at.run()
     assert not at.exception, at.exception
 
@@ -47,7 +79,7 @@ def test_every_section_renders_offline(offline):
     ratings = {}
     for entry in TEAMS:
         load(at, entry)
-        assert any(m.label == 'Team value' for m in at.sidebar.metric)
+        assert any('Team value' in m.value for m in at.markdown)
         for name in SECTIONS:
             show(at, name)
             assert not at.error, (name, [e.value for e in at.error])
@@ -86,10 +118,38 @@ def test_an_unknown_team_gives_a_message_not_a_traceback(offline):
     at = app()
     load(at, '999999999')
     assert not at.exception
-    assert any('not cached' in e.value for e in at.sidebar.error)
+    assert any('not cached' in e.value for e in at.error)
 
 
 def test_a_non_numeric_team_id_is_explained(offline):
     at = app()
     load(at, 'abc')
-    assert any('number' in e.value for e in at.sidebar.error)
+    assert any('number' in e.value for e in at.error)
+
+
+def test_setup_folds_away_once_the_team_and_key_are_valid(online):
+    at = app()
+    assert setup_shown(at)
+    submit(at, '3265946')                         # a team but no key yet: stays
+    assert setup_shown(at) and any('Team value' in m.value for m in at.markdown)
+    submit(at, '3265946', 'bad-key')              # a rejected key: stays, says why
+    assert setup_shown(at) and any('rejected' in e.value for e in at.error)
+    submit(at, '3265946', 'good-key')
+    assert not setup_shown(at)
+    assert at.session_state['openrouter_key'] == 'good-key'
+    assert any(t.key == 'live_ai_toggle' for t in at.toggle)
+    at.button(key='setup_change').click()         # and back again
+    at.run()
+    assert setup_shown(at)
+
+
+def test_continuing_without_ai_folds_the_setup_too(online):
+    at = app()
+    submit(at, '3265946', button='setup_skip')
+    assert not setup_shown(at)
+
+
+def test_an_invalid_team_keeps_the_setup_open(online):
+    at = app()
+    submit(at, '999999999', 'good-key')
+    assert setup_shown(at) and any('not cached' in e.value for e in at.error)

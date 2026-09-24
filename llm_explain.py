@@ -215,6 +215,23 @@ def redact(text, key=None):
     return KEY_SHAPE.sub(MASK, text)
 
 
+KEY_URL = 'https://openrouter.ai/api/v1/key'
+
+
+def check_key(api_key, timeout=8):
+    """True if OpenRouter accepts the key, False if it rejects it, None if it
+    could not be checked (offline, timeout). Costs nothing; never raises."""
+    req = urllib.request.Request(KEY_URL, headers={
+        'Authorization': f'Bearer {(api_key or "").strip()}'})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout):
+            return True
+    except urllib.error.HTTPError as e:
+        return False if e.code in (401, 403) else None
+    except Exception:
+        return None
+
+
 # ---------------------------------------------------------------- the call
 
 def call_openrouter(facts, model=MODEL, models=FALLBACKS, timeout=TIMEOUT,

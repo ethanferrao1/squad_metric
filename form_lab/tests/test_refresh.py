@@ -124,7 +124,7 @@ def test_a_second_click_during_a_refresh_does_not_start_another(sandbox):
     from streamlit.testing.v1 import AppTest
     at = AppTest.from_file(str(ROOT / 'app.py'), default_timeout=600)
     at.run()
-    at.button(key='refresh_wide').click()
+    at.button(key='refresh').click()
     at.run()
     assert any('already running' in t.value for t in at.toast)
 
@@ -145,16 +145,17 @@ def test_a_failed_background_refresh_releases_the_lock(sandbox):
     assert refresher.start(lambda progress: 5)[0]  # no cooldown after a failure
 
 
-def test_the_session_survives_a_refresh(sandbox):
+def test_the_session_survives_a_refresh(sandbox, monkeypatch):
+    import llm_explain
+    monkeypatch.setattr(llm_explain, 'check_key', lambda key: True)
     from streamlit.testing.v1 import AppTest
     at = AppTest.from_file(str(ROOT / 'app.py'), default_timeout=600)
     at.run()
-    at.sidebar.text_input[0].input('3265946')
-    at.sidebar.button[0].click()
+    at.text_input(key='setup_team').input('3265946')
+    at.text_input(key='setup_key').input('user-session-key')
+    at.button(key='setup_load').click()
     at.run()
-    at.sidebar.text_input[1].input('user-session-key')
-    at.radio(key='section').set_value('My Team')
-    at.run()
+    assert not any(w.key == 'setup_team' for w in at.text_input)   # folded away
     [chips] = [g for g in at.get('button_group') if g.key == 'team-pick']
     name = 'Haaland'                               # in team 3265946
     chips.set_value([name])
@@ -171,7 +172,7 @@ def test_the_session_survives_a_refresh(sandbox):
     assert at.session_state['entry'] == '3265946'
     assert at.radio(key='section').value == 'My Team'
     assert at.session_state[ai.KEY] == 'user-session-key'
-    assert at.sidebar.text_input[1].value == 'user-session-key'
+    assert not any(w.key == 'setup_team' for w in at.text_input)   # still folded
     assert at.session_state['panel'] == panel
     assert any('avatar-lg' in m.value and f'>{name}</div>' in m.value for m in at.markdown)
     assert any(t.value == 'Data updated to GW5' for t in at.toast)
